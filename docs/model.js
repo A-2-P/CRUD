@@ -1,21 +1,21 @@
-import { Person } from './person.js';
+import { DAO } from './dao.js';
 
 export class Model {
   constructor() {
-    this.personen = [];
-    this.personen.push(new Person());
-    this.personen.push(new Person());
-    this.personen.push(new Person());
+    this.dao = new DAO();
+    this.personen = this.dao.readData();
+
   }
 
   // CRUD-Methoden
-  // CREATE
-  createPerson(person) {
+  //CREATE
+  createPerson(person){
     this.personen.push(person);
+    this.dao.saveData(this.personen);
   }
 
-  // READ
-  readAllPersons() {
+  //READ
+  readAllPersons(){
     return this.personen;
   }
 
@@ -23,7 +23,11 @@ export class Model {
     return 'Hello from Model!';
   }
 
-  // UPDATE
 
-  // DELETE
+  //DELETE
+  deletePerson(index){
+    this.personen.splice(index,1);
+    this.dao.saveData(this.personen);
+  }
+
 }
