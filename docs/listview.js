@@ -25,7 +25,7 @@ export class ListView {
         Geburtsdatum: ${geburtsdatum} 
         Haare: ${haare} `;
         html += haarfarbe;
-        html +=`<button class='delete' id="${index}">X</button></li>`;
+        html +=`<br><button class='delete' id="${index}">Eintrag löschen</button></li><br>`;
         index++;
       });   
       html += '</ul>';
